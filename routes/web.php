@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/{any}',function(){
     return view('index');
-})-where('any','.*');
+})->where('any','.*');
 
 Route::get('/todosCampeonatos', "App\Http\Controllers\CampeonatoController@mostrar");
 
