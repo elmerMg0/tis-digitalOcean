@@ -28,23 +28,7 @@ Route::post("delegados",[App\Http\Controllers\DelegadoController::class,'store']
 
 Route::put("delegados/{delegado}",[App\Http\Controllers\DelegadoController::class,'update ']); */
 
-Route::apiResource('delegados',\App\Http\Controllers\DelegadoController::class);
 
-Route::post("registro", [ \App\Http\Controllers\RegistroController::class, "store"]);
-
-/* Login */
-Route::post("login",[ \App\Http\Controllers\UserController::class, "login"] );
-
-/* Campeonato */
-Route::apiResource('campeonato',\App\Http\Controllers\CampeonatoController::class);
-
-Route::put("pagoMedio/{id}", [ \App\Http\Controllers\CampeonatoController::class, "pagoMedio"]);
-
-Route::put("pagoCompleto/{id}", [ \App\Http\Controllers\CampeonatoController::class, "pagoCompleto"]);
-
-Route::put("pagcomprobantePagooCompleto/{id}", [ \App\Http\Controllers\CampeonatoController::class, "comprobantePago"]);
-
-Route::put("comprobantePagoMedio/{id}", [ \App\Http\Controllers\CampeonatoController::class, "comprobantePagoMedio"]);
 
 Route::get('/todosCampeonatos', [\App\Http\Controllers\CampeonatoController::class,"mostrar"]);
 Route::post('/anadirDelegado',[\App\Http\Controllers\DelegadoController::class,"store"]);
@@ -75,7 +59,7 @@ Route::get('/arbitros', [\App\Http\Controllers\ArbitroController::class,"show"])
 Route::get('/obtenerEquipo/{id}', [\App\Http\Controllers\EquipoController::class,"obtenerEquipo"]);
 
 Route::get('/habilitadoSin', [\App\Http\Controllers\InscripcionController::class,"obtenerHabilitadoSin"]);
-Route::get('/habilitado', [\App\Http\Controllers\InscripcionController,"obtenerHabilitado"]);
+Route::get('/habilitado', [\App\Http\Controllers\InscripcionController::class,"obtenerHabilitado"]);
 Route::get('/porCategoria/{id}', [\App\Http\Controllers\InscripcionController::class,"obtenerCategoria"]);
 
 
