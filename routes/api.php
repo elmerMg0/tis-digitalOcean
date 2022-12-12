@@ -14,10 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+/* Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
+ */
 
 /* Route::get("delegados",[App\Http\Controllers\DelegadoController::class,'index']);
 Route::get("delegados/{delegado}",[App\Http\Controllers\DelegadoController::class,'show']);

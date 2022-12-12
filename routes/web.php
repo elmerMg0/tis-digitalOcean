@@ -12,10 +12,6 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/{any}',function(){
-    return view('index');
-})->where('any','.*');
-
 Route::get('/todosCampeonatos', "App\Http\Controllers\CampeonatoController@mostrar");
 
 Route::post('/anadirDelegado',"App\Http\Controllers\DelegadoController@store");
@@ -109,3 +105,7 @@ Route::post('/agregarLogo/{idEq}', "App\Http\Controllers\EquipoController@agrega
 Route::delete('/eliminarJugadores/{idEq}', "App\Http\Controllers\JugadorController@eliminarJugadores");
 Route::post('/agregarFotoInfo', "App\Http\Controllers\InformacionController@agregarFotoInfo");
 Route::get('/obtenerJugadoresQr/{idE}', "App\Http\Controllers\JugadorController@obtenerJugadoresQr");
+/* Para produccion */
+Route::get('/{any}',function(){
+    return view('index');
+})->where('any','.*');

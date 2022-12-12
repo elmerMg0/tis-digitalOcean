@@ -71,7 +71,7 @@ class CampeonatoController extends Controller
 
     public function pagoCompleto(Request $request, $id){
         $file = $request->file("imagen");
-        $nombre = "cpm".time().".".$file->extension();
+        $nombre = "cpc".time().".".$file->extension();
         $file->storeAs("",$nombre,'public');
         $campeonato = Campeonato::where("IDCAMPEONATO",$id)->first();
         $campeonato->PAGOCOMPLETO = $nombre;
