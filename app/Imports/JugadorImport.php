@@ -53,7 +53,7 @@ class JugadorImport implements ToCollection
      private function generarQr($nombre,$ci,$id){
         $equipo = Equipo::where("IDEQUIPO",$this->idEquipo)->first();
         $nombreQr = $id.time().".svg";
-        $inforJugador = $nombre." ".$ci." ".$equipo->NOMBRE;
+        $inforJugador = $nombre." ".$ci." ".$equipo->NOMBRE." ".$equipo->CATEGORIA;
         QrCode::generate($inforJugador,'../public/qrJugadores/'.$nombreQr);
         return $nombreQr;
     } 

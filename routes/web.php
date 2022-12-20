@@ -12,6 +12,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+/* Para produccion */
+/* Route::get('/{any}',function(){
+    return view('index');
+})->where('any','.*'); */
 Route::get('/todosCampeonatos', "App\Http\Controllers\CampeonatoController@mostrar");
 
 Route::post('/anadirDelegado',"App\Http\Controllers\DelegadoController@store");
@@ -73,6 +77,8 @@ Route::put('/acutalizarFechas/{id}', "App\Http\Controllers\CampeonatoController@
 Route::put('/acutalizarPagos/{id}', "App\Http\Controllers\CampeonatoController@updatePagos");
 Route::put('/habilitarSinJugador/{id}', "App\Http\Controllers\InscripcionController@habilitarSinJugador");
 
+Route::put('/eliminarEquipo/{id}',"App\Http\Controllers\InscripcionController@eliminarEquipo");
+
 Route::delete('/eliminarCategoria/{id}',"App\Http\Controllers\CategoriaController@eliminar");
 Route::delete('/eliminarArbitro/{id}',"App\Http\Controllers\ArbitroController@eliminar");
 Route::delete('/eliminarFoto/{id}',"App\Http\Controllers\InformacionController@eliminar");
@@ -106,7 +112,5 @@ Route::post('/agregarLogo/{idEq}', "App\Http\Controllers\EquipoController@agrega
 Route::delete('/eliminarJugadores/{idEq}', "App\Http\Controllers\JugadorController@eliminarJugadores");
 Route::post('/agregarFotoInfo', "App\Http\Controllers\InformacionController@agregarFotoInfo");
 Route::get('/obtenerJugadoresQr/{idE}', "App\Http\Controllers\JugadorController@obtenerJugadoresQr");
-/* Para produccion */
-/* Route::get('/{any}',function(){
-    return view('index');
-})->where('any','.*'); */
+Route::post('/agregarReglamento/{idC}', "App\Http\Controllers\CampeonatoController@agregarReglamento");
+

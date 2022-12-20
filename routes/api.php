@@ -14,66 +14,50 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/* Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
- */
-
-/* Route::get("delegados",[App\Http\Controllers\DelegadoController::class,'index']);
-Route::get("delegados/{delegado}",[App\Http\Controllers\DelegadoController::class,'show']);
-
-Route::delete("delegados/{delegado}",[App\Http\Controllers\DelegadoController::class,'destroy']);
-
-Route::post("delegados",[App\Http\Controllers\DelegadoController::class,'store']);
-
-Route::put("delegados/{delegado}",[App\Http\Controllers\DelegadoController::class,'update ']); */
 
 
+Route::get('/todosCampeonatos', [App\Http\Controllers\CampeonatoController::class,"mostrar"]);
 
-Route::get('/todosCampeonatos', [\App\Http\Controllers\CampeonatoController::class,"mostrar"]);
-Route::post('/anadirDelegado',[\App\Http\Controllers\DelegadoController::class,"store"]);
-Route::post('/añadirArbitro',[\App\Http\Controllers\ArbitroController::class,"store"]);
-Route::post('/anadirEquipo',[\App\Http\Controllers\EquipoController::class,"store"]);
-Route::post('/anadirInscripcion',[\App\Http\Controllers\InscripcionController::class,"store"]);
-Route::post('/anadirCampeonato',[\App\Http\Controllers\CampeonatoController::class,"store"]);
-Route::post('/anadirCategoria',[\App\Http\Controllers\CategoriaController::class,"store"]);
-Route::post('/añadirInformacion',[\App\Http\Controllers\InformacionController::class,"store"]);
-Route::post('/anadirPartido',[\App\Http\Controllers\PartidosController::class,"store"]);
-
-Route::get('/nombreCategorias', [\App\Http\Controllers\CategoriaController::class,"obtenerNombreCategoria"]);
+Route::post('/anadirDelegado',[App\Http\Controllers\DelegadoController::class,"store"]);
+Route::post('/añadirArbitro',[App\Http\Controllers\ArbitroController::class,"store"]);
+Route::post('/anadirEquipo',[App\Http\Controllers\EquipoController::class,"store"]);
+Route::post('/anadirInscripcion',[App\Http\Controllers\InscripcionController::class,"store"]);
+Route::post('/anadirCampeonato',[App\Http\Controllers\CampeonatoController::class,"store"]);
+Route::post('/anadirCategoria',[App\Http\Controllers\CategoriaController::class,"store"]);
+Route::post('/añadirInformacion',[App\Http\Controllers\InformacionController::class,"store"]);
+Route::post('/anadirPartido',[App\Http\Controllers\PartidosController::class,"store"]);
 
 
-Route::get('/haySemifinal/{id}', [\App\Http\Controllers\PartidosController::class,"haySemifinal"]);
+Route::get('/nombreCategorias', [App\Http\Controllers\CategoriaControlle::class,"obtenerNombreCategoria"]);
 
-Route::get('/semiFinalA/{id}', [\App\Http\Controllers\PartidosController::class,"semiFinalA"]);
-
-Route::get('/semiFinalB/{id}', [\App\Http\Controllers\PartidosController::class,"semiFinalB"]);
-
-Route::get('/obtenerPartidoEspecifico/{id}', [\App\Http\Controllers\PartidosController::class,"obtenerPartido"]);
-
-Route::get('/obtenercategoriafixture/{id}', [\App\Http\Controllers\PartidosController::class,"obtenerCategoria"]);
-Route::get('/partidos', [\App\Http\Controllers\PartidosController::class,"obtenerPartidos"]);
-Route::get('/arbitro/{id}', [\App\Http\Controllers\ArbitroController::class,"obtenerArbitro"]);
-Route::get('/arbitros', [\App\Http\Controllers\ArbitroController::class,"show"]);
-
-Route::get('/obtenerEquipo/{id}', [\App\Http\Controllers\EquipoController::class,"obtenerEquipo"]);
-
-Route::get('/habilitadoSin', [\App\Http\Controllers\InscripcionController::class,"obtenerHabilitadoSin"]);
-Route::get('/habilitado', [\App\Http\Controllers\InscripcionController::class,"obtenerHabilitado"]);
-Route::get('/porCategoria/{id}', [\App\Http\Controllers\InscripcionController::class,"obtenerCategoria"]);
+Route::get('/haySemifinal/{id}', [App\Http\Controllers\PartidosControlle::class,"haySemifinal"]);
 
 
-Route::get('/equiposPuntos/{id}', [\App\Http\Controllers\InscripcionController::class,"obtenerEquipos"]);
+Route::get('/semiFinalA/{id}', [App\Http\Controllers\PartidosController::class,"semiFinalA"]);
+Route::get('/semiFinalB/{id}', [App\Http\Controllers\PartidosController::class,"semiFinalB"]);
 
-Route::get('/medioPago', [\App\Http\Controllers\InscripcionController::class,"obtenerMedioPago"]);
-Route::get('/pagoCompleto', [\App\Http\Controllers\InscripcionController::class,"obtenerPagoCompleto"]);
-Route::get('/categorias', [\App\Http\Controllers\CategoriaController::class,"show"]);
-Route::get('/existeCategoria/{id}', [\App\Http\Controllers\CategoriaController::class,"existe"]);
-Route::get('/administrador/{id}', [\App\Http\Controllers\AdministradorController::class,"obtenerAdministrador"]);
-Route::get('/delegado/{id}', [\App\Http\Controllers\DelegadoController::class,"obtenerDelegado"]);
-Route::get('/delegadoNombre/{id}', [\App\Http\Controllers\DelegadoController::class,"obtenerNombreDelegado"]);
-Route::get('/obtenerEquipo/{id}', [\App\Http\Controllers\EquipoController::class,"obtenerEquipo"]);
-Route::get('/informacion', [\App\Http\Controllers\InformacionController::class,"informacion"]);
+Route::get('/obtenerPartidoEspecifico/{id}', [App\Http\Controllers\PartidosController::class,"obtenerPartido"]);
+
+Route::get('/obtenercategoriafixture/{id}', [App\Http\Controllers\PartidosController::class,"obtenerCategoria"]);
+Route::get('/partidos', [App\Http\Controllers\PartidosController::class,"obtenerPartidos"]);
+Route::get('/arbitro/{id}', [App\Http\Controllers\ArbitroController::class,"obtenerArbitro"]);
+Route::get('/arbitros', [App\Http\Controllers\ArbitroController::class,"show"]);
+Route::get('/obtenerEquipo/{id}', [App\Http\Controllers\EquipoController::class,"obtenerEquipo"]);
+Route::get('/habilitadoSin', [App\Http\Controllers\InscripcionController::class,"obtenerHabilitadoSin"]);
+Route::get('/habilitado', [App\Http\Controllers\InscripcionController::class,"obtenerHabilitado"]);
+Route::get('/porCategoria/{id}', [App\Http\Controllers\InscripcionController::class,"obtenerCategoria"]);
+
+Route::get('/equiposPuntos/{id}', [App\Http\Controllers\InscripcionController::class,"obtenerEquipos"]);
+
+Route::get('/medioPago', [App\Http\Controllers\InscripcionController::class,"obtenerMedioPago"]);
+Route::get('/pagoCompleto', [App\Http\Controllers\InscripcionController::class,"obtenerPagoCompleto"]);
+Route::get('/categorias', [App\Http\Controllers\CategoriaController::class,"show"]);
+Route::get('/existeCategoria/{id}', [App\Http\Controllers\CategoriaController::class,"existe"]);
+Route::get('/administrador/{id}', [App\Http\Controllers\AdministradorController::class,"obtenerAdministrador"]);
+Route::get('/delegado/{id}', [App\Http\Controllers\DelegadoController::class,"obtenerDelegado"]);
+Route::get('/delegadoNombre/{id}', [App\Http\Controllers\DelegadoController::class,"obtenerNombreDelegado"]);
+Route::get('/informacion', [App\Http\Controllers\InformacionController::class,"informacion"]);
+
 
 Route::get('/obtenerFinal/{id}', [\App\Http\Controllers\PartidosController::class,"obtenerFinal"]);
 
@@ -106,6 +90,7 @@ Route::get('/',function(){
     return "holamundo";
 });
 
+Route::put("pagcomprobantePagooCompleto/{id}", [ \App\Http\Controllers\CampeonatoController::class, "comprobantePago"]);
 
 Route::get('/import-users',[UserController::class,'importUsers'])->name('import');
 //Route::post('/upload-users',[UserController::class,'uploadUsers'])->name('upload');
@@ -131,3 +116,4 @@ Route::post('/agregarLogo/{idEq}', [App\Http\Controllers\EquipoController::class
 Route::delete('/eliminarJugadores/{idEq}', [App\Http\Controllers\JugadorController::class,"eliminarJugadores"]);
 Route::post('/agregarFotoInfo', [App\Http\Controllers\InformacionController::class,"agregarFotoInfo"]);
 Route::get('/obtenerJugadoresQr/{idE}', [App\Http\Controllers\JugadorController::class,"obtenerJugadoresQr"]);
+Route::post('/agregarReglamento/{idC}', [App\Http\Controllers\CampeonatoController::class,"agregarReglamento"]);

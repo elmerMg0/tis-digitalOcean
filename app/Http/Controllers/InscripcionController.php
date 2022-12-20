@@ -12,8 +12,6 @@ class InscripcionController extends Controller
 {
     public function eliminarEquipo ($id)
     {
-        $equipo = Equipo::where("NOMBRE",$id)->first();
-        //$Delegado = Delegado::where("IDDELEGADO",$equipo->IDDELEGADO)->first();
         $Equipo = Equipo::where("NOMBRE",$id)->pluck('IDEQUIPO')->first();
         $Inscripcion = Inscripcion::where("IDEQUIPO",$Equipo)->first();
         $Inscripcion -> PAGOMEDIO = "";
@@ -61,11 +59,12 @@ class InscripcionController extends Controller
     {
         $lista = Inscripcion::where("HABILITADO","Habilitado")->where("PAGOMEDIO","Completo")->pluck('IDEQUIPO');
         $listado = array();
-        $i=0;/*
+        $i=0;
         while($i<count($lista)){
             $idInscripcion =Inscripcion::where("IDEQUIPO",$lista[$i])->pluck('IDINSCRIPCION');
             $comprobante = Inscripcion::where("IDEQUIPO",$lista[$i])->pluck('COMPROBANTEPAGO');
             $comprobanteCompleto = Inscripcion::where("IDEQUIPO",$lista[$i])->pluck('COMPROBANTEMEDIO');
+            $IDEQUIPO = $lista[$i];
             $equipo = Equipo::where("IDEQUIPO",$lista[$i])->first();
             $nombreEquipo = $equipo->NOMBRE;
             $idDelegado = $equipo->IDDELEGADO;
@@ -83,6 +82,7 @@ class InscripcionController extends Controller
             $genero = $delegado->GENERO;
             $logo = $equipo->LOGO;
             $equipoDelegado = new EquipoDelegado();
+            $equipoDelegado ->IDEQUIPO = $lista[$i];
             $equipoDelegado -> NOMBREDELEGADO = $nombreDelegado;
             $equipoDelegado -> NOMBREEQUIPO = $nombreEquipo;
             $equipoDelegado -> CI = $ci;
@@ -102,8 +102,8 @@ class InscripcionController extends Controller
 
             array_push($listado,$equipoDelegado);
             $i++;
-        }*/
-        return $lista;
+        }
+        return $listado;
     }
 
     public function obtenerHabilitadoSin()

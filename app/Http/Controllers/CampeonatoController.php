@@ -71,13 +71,24 @@ class CampeonatoController extends Controller
 
     public function pagoCompleto(Request $request, $id){
         $file = $request->file("imagen");
-        $nombre = "cpc".time().".".$file->extension();
+        $nombre = "cpm".time().".".$file->extension();
         $file->storeAs("",$nombre,'public');
         $campeonato = Campeonato::where("IDCAMPEONATO",$id)->first();
         $campeonato->PAGOCOMPLETO = $nombre;
         $campeonato->save();
 
         return \response()->json(["res"=> true, "message"=>"imagen cargaga"]);
+    }
+
+    public function agregarReglamento(Request $request,$id){
+        $file = $request->file("reglamento");
+        $nombre = "regla".time().".".$file->extension();
+        $file->storeAs("",$nombre,'public');
+        $campeonato = Campeonato::where("IDCAMPEONATO",$id)->first();
+        $campeonato->DESCRIPCION = $nombre;
+        $campeonato->save();
+
+        return \response()->json(["res"=> true, "message"=>"Reglamento cargado"]);
     }
 
 }

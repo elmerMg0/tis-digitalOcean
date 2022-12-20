@@ -13,8 +13,9 @@ class Jugador extends Model
     protected $fillable = ["IDJUGADOR","IDEQUIPO","NOMBREJUGADOR","CIJUGADOR",
 "CELULAR","EMAIL","FOTOCIJUGADOR","ROL","FOTOQR","FOTOJUGADOR","FECHANACIMIENTO"];
     public $timestamps = false;
+    protected $keyType = 'string';
 
-    
 
-    
+
+
 }

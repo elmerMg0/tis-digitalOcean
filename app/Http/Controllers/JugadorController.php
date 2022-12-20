@@ -32,7 +32,7 @@ class JugadorController extends Controller
         $cantMax = $equipo->CANTIDAD;
         
         $nombreQr = $request->IDJUGADOR.time().".svg";
-        $inforJugador = $request->NOMBREJUGADOR." ".$request->CIJUGADOR." ".$equipo->NOMBRE;
+        $inforJugador = $request->NOMBREJUGADOR." ".$request->CIJUGADOR." ".$equipo->NOMBRE." ".$equipo->CATEGORIA;
         QrCode::generate($inforJugador,'../public/qrJugadores/'.$nombreQr);
         $jugador->FOTOQR= $nombreQr;
         $jugador->save();
