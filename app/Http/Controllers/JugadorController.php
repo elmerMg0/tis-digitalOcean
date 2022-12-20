@@ -39,7 +39,7 @@ class JugadorController extends Controller
 
         if($cantAct == $cantMax){
             $inscripcion = Inscripcion::where("IDEQUIPO",$id)->first();
-            $inscripcion->HABILITADO = "habilitado";
+            $inscripcion->HABILITADO = "Habilitado";
             $inscripcion->save();
         }
         return $jugador;
