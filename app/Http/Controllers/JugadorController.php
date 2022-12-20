@@ -30,15 +30,15 @@ class JugadorController extends Controller
         $equipo = Equipo::where("IDEQUIPO",$request->IDEQUIPO)->first();
         $cantAct = sizeof($jugadores);
         $cantMax = $equipo->CANTIDAD;
-        
+
         $nombreQr = $request->IDJUGADOR.time().".svg";
         $inforJugador = $request->NOMBREJUGADOR." ".$request->CIJUGADOR." ".$equipo->NOMBRE." ".$equipo->CATEGORIA;
         QrCode::generate($inforJugador,'../public/qrJugadores/'.$nombreQr);
         $jugador->FOTOQR= $nombreQr;
         $jugador->save();
-        
+
         if($cantAct == $cantMax){
-            $inscripcion = Inscripcion::where("IDEQUIPO",$id)->first();              
+            $inscripcion = Inscripcion::where("IDEQUIPO",$id)->first();
             $inscripcion->HABILITADO = "habilitado";
             $inscripcion->save();
         }
@@ -56,11 +56,11 @@ class JugadorController extends Controller
         $file = $request->file("imagen");
         $nombre = "ci".time().".".$file->extension();
         $file->storeAs("", $nombre,'public');
-        
+
         $jugador = Jugador::where("CIJUGADOR",$id)->first();
         $jugador->FOTOCIJUGADOR = $nombre;
-        $jugador->save();     
-        //return $path;   
+        $jugador->save();
+        //return $path;
         return $nombre;
     }
 
@@ -68,10 +68,10 @@ class JugadorController extends Controller
         $file = $request->file("imagen");
         $nombre = "pic".time().".".$file->extension();
         $file->storeAs("", $nombre,'public');
-        
+
         $jugador = Jugador::where("CIJUGADOR",$id)->first();
         $jugador->FOTOJUGADOR = $nombre;
-        $jugador->save();     
+        $jugador->save();
         return $nombre;
     }
    public function actualizarJugador(Request $request , $ci){
@@ -97,12 +97,12 @@ class JugadorController extends Controller
 
    public function addJugadoresExcel(Request $request, $id){
     $this->eliminarJugadores($id);
-    $equipo = Equipo::where("IDEQUIPO",$id)->first(); 
+    $equipo = Equipo::where("IDEQUIPO",$id)->first();
     if( ! empty($id)){
         $datos = Excel::import(new JugadorImport($id, $equipo->CANTIDAD),request()->file('file'));
     }
     $inscripcion = Inscripcion::where("IDEQUIPO",$id)->first();
-    $inscripcion->HABILITADO = "habilitado";
+    $inscripcion->HABILITADO = "Habilitado";
     $inscripcion->save();
     return \response()->json(["res"=> true, "datos"=> $datos]);
     }

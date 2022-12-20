@@ -53,7 +53,7 @@ class DelegadoController extends Controller
         /* $equipo = Equipo::join("Incripcion","equipo.IDEQUIPO","=","incripcion.IDEQUIPO")
                             ->where("IDDELEGADO",$id)
                             ->get(); */
-       $equipo = Inscripcion::join("Equipo","Incripcion.IDEQUIPO","=","Equipo.IDEQUIPO")
+       $equipo = Inscripcion::join("Equipo","incripcion.IDEQUIPO","=","equipo.IDEQUIPO")
                             ->where("IDDELEGADO",$id)
                             ->get();
         return $equipo;

@@ -281,6 +281,7 @@ class InscripcionController extends Controller
         $inscripcion = Inscripcion::where("IDINSCRIPCION",$id)->first();
         $inscripcion->COMPROBANTEMEDIO = $nombre;
         $inscripcion->PAGOMEDIO = "Completo";
+        $inscripcion->HABILITADO = "false";
         $inscripcion->save();
         return \response()->json(["res"=> true, "message"=>"imagen cargada"]);
 
