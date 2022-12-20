@@ -33,7 +33,6 @@ Route::get('/semiFinalB/{id}', "App\Http\Controllers\PartidosController@semiFina
 
 Route::get('/obtenerPartidoEspecifico/{id}', "App\Http\Controllers\PartidosController@obtenerPartido");
 
-
 Route::get('/obtenercategoriafixture/{id}', "App\Http\Controllers\PartidosController@obtenerCategoria");
 Route::get('/partidos', "App\Http\Controllers\PartidosController@obtenerPartidos");
 Route::get('/arbitro/{id}', "App\Http\Controllers\ArbitroController@obtenerArbitro");
@@ -64,9 +63,11 @@ Route::get('/obtenerPuntos/{id}', "App\Http\Controllers\EquipoController@obtener
 Route::get('/obtenerEntrenador/{id}', "App\Http\Controllers\EquipoController@obtenerEntrenador");
 
 
+Route::put('/actualizarPartido/{id}', "App\Http\Controllers\PartidosController@actualizarDatos");
+
 Route::put('/subirPuntos/{id}', "App\Http\Controllers\EquipoController@subirPuntos");
 
-Route::put('/actualizarPartido/{id}', "App\Http\Controllers\PartidosController@actualizarDatos");
+Route::put('/actualizarPartidoPuntos/{id}', "App\Http\Controllers\PartidosController@actualizarPartido");
 
 Route::put('/acutalizarFechas/{id}', "App\Http\Controllers\CampeonatoController@updateFechas");
 Route::put('/acutalizarPagos/{id}', "App\Http\Controllers\CampeonatoController@updatePagos");
@@ -106,6 +107,6 @@ Route::delete('/eliminarJugadores/{idEq}', "App\Http\Controllers\JugadorControll
 Route::post('/agregarFotoInfo', "App\Http\Controllers\InformacionController@agregarFotoInfo");
 Route::get('/obtenerJugadoresQr/{idE}', "App\Http\Controllers\JugadorController@obtenerJugadoresQr");
 /* Para produccion */
-Route::get('/{any}',function(){
+/* Route::get('/{any}',function(){
     return view('index');
-})->where('any','.*');
+})->where('any','.*'); */

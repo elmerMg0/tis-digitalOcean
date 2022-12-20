@@ -118,6 +118,15 @@ class PartidosController extends Controller
         return Partidos::where("IDCATEGORIA",$id)->get();
     }
 
+    public function actualizarPartido (Request $request,$id)
+    {
+        $partidos = Partidos::findOrFail($id);
+        $partidos->ANOTACIONESEQ1 = $request->ANOTACIONESEQ1;
+        $partidos->ANOTACIONESEQ2 = $request->ANOTACIONESEQ2;
+        $partidos->save();
+        return $partidos;
+    }
+
     public function store(Request $request)
     {
         $partidos = new Partidos;

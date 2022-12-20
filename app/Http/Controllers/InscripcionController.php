@@ -10,6 +10,18 @@ use App\Models\Delegado;
 
 class InscripcionController extends Controller
 {
+    public function eliminarEquipo ($id)
+    {
+        $equipo = Equipo::where("NOMBRE",$id)->first();
+        //$Delegado = Delegado::where("IDDELEGADO",$equipo->IDDELEGADO)->first();
+        $Equipo = Equipo::where("NOMBRE",$id)->pluck('IDEQUIPO')->first();
+        $Inscripcion = Inscripcion::where("IDEQUIPO",$Equipo)->first();
+        $Inscripcion -> PAGOMEDIO = "";
+        $Inscripcion -> HABILITADO = "";
+        $Inscripcion->save();
+        return $Inscripcion;
+    }
+
     public function store(Request $request)
     {
         $inscripcion = new Inscripcion;
@@ -49,7 +61,7 @@ class InscripcionController extends Controller
     {
         $lista = Inscripcion::where("HABILITADO","Habilitado")->where("PAGOMEDIO","Completo")->pluck('IDEQUIPO');
         $listado = array();
-        $i=0;
+        $i=0;/*
         while($i<count($lista)){
             $idInscripcion =Inscripcion::where("IDEQUIPO",$lista[$i])->pluck('IDINSCRIPCION');
             $comprobante = Inscripcion::where("IDEQUIPO",$lista[$i])->pluck('COMPROBANTEPAGO');
@@ -68,8 +80,8 @@ class InscripcionController extends Controller
             $celular = $delegado->CELULAR;
             $fecha = $delegado->FECHANACIMIENTO;
             $nacionalidad = $delegado->NACIONALIDAD;
-            $logo = $equipo->LOGO;
             $genero = $delegado->GENERO;
+            $logo = $equipo->LOGO;
             $equipoDelegado = new EquipoDelegado();
             $equipoDelegado -> NOMBREDELEGADO = $nombreDelegado;
             $equipoDelegado -> NOMBREEQUIPO = $nombreEquipo;
@@ -90,8 +102,8 @@ class InscripcionController extends Controller
 
             array_push($listado,$equipoDelegado);
             $i++;
-        }
-        return $listado;
+        }*/
+        return $lista;
     }
 
     public function obtenerHabilitadoSin()
@@ -252,11 +264,11 @@ class InscripcionController extends Controller
         $file = $request->file("imagen");
         $nombre = "cp".time().".".$file->extension();
         $file->storeAs("", $nombre,'public');
-        
+
         $inscripcion = Inscripcion::where("IDEQUIPO",$id)->first();
         $inscripcion->COMPROBANTEPAGO = $nombre;
         /* $inscripcion->PAGOMEDIO = "COMPLETO"; */
-        $inscripcion->save();       
+        $inscripcion->save();
         return \response()->json(["res"=> true, "message"=>"imagen cargada"]);
     }
 
@@ -265,11 +277,11 @@ class InscripcionController extends Controller
         $file = $request->file("imagen");
         $nombre = "CPM".time().".".$file->extension();
         $file->storeAs("", $nombre,'public');
-        
+
         $inscripcion = Inscripcion::where("IDINSCRIPCION",$id)->first();
         $inscripcion->COMPROBANTEMEDIO = $nombre;
         $inscripcion->PAGOMEDIO = "Completo";
-        $inscripcion->save();       
+        $inscripcion->save();
         return \response()->json(["res"=> true, "message"=>"imagen cargada"]);
 
     }

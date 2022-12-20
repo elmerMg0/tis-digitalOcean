@@ -88,9 +88,15 @@ Route::put('/subirPuntos/{id}', [\App\Http\Controllers\EquipoController::class,"
 
 Route::put('/actualizarPartido/{id}', [\App\Http\Controllers\PartidosController::class,"actualizarDatos"]);
 
+Route::put('/actualizarPartidoPuntos/{id}', [\App\Http\Controllers\PartidosController::class,"actualizarPartido"]);
+
+
 Route::put('/acutalizarFechas/{id}', [\App\Http\Controllers\CampeonatoController::class,"updateFechas"]);
 Route::put('/acutalizarPagos/{id}', [\App\Http\Controllers\CampeonatoController::class,"updatePagos"]);
 Route::put('/habilitarSinJugador/{id}', [\App\Http\Controllers\InscripcionController::class,"habilitarSinJugador"]);
+
+
+Route::put('/eliminarEquipo/{id}',[\App\Http\Controllers\InscripcionController::class,"eliminarEquipo"]);
 
 Route::delete('/eliminarCategoria/{id}',[\App\Http\Controllers\CategoriaController::class,"eliminar"]);
 Route::delete('/eliminarArbitro/{id}',[\App\Http\Controllers\ArbitroController::class,"eliminar"]);
