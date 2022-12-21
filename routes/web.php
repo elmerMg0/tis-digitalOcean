@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 /* Para produccion */
-/* Route::get('/{any}',function(){
+Route::get('/{any}',function(){
     return view('index');
-})->where('any','.*'); */
+})->where('any','.*');
 Route::get('/todosCampeonatos', "App\Http\Controllers\CampeonatoController@mostrar");
 
 Route::post('/anadirDelegado',"App\Http\Controllers\DelegadoController@store");

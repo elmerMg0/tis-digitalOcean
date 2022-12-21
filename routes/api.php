@@ -28,9 +28,9 @@ Route::post('/añadirInformacion',[App\Http\Controllers\InformacionController::c
 Route::post('/anadirPartido',[App\Http\Controllers\PartidosController::class,"store"]);
 
 
-Route::get('/nombreCategorias', [App\Http\Controllers\CategoriaControlle::class,"obtenerNombreCategoria"]);
+Route::get('/nombreCategorias', [App\Http\Controllers\CategoriaController::class,"obtenerNombreCategoria"]);
 
-Route::get('/haySemifinal/{id}', [App\Http\Controllers\PartidosControlle::class,"haySemifinal"]);
+Route::get('/haySemifinal/{id}', [App\Http\Controllers\PartidosController::class,"haySemifinal"]);
 
 
 Route::get('/semiFinalA/{id}', [App\Http\Controllers\PartidosController::class,"semiFinalA"]);
